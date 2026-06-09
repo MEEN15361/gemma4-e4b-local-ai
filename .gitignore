@@ -1,0 +1,31 @@
+# Model files (too large for git, download separately)
+*.gguf
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Working files (created by AI during tasks)
+_notes.txt
+_plan.txt
+
+# Chat history (user-specific)
+chats/
+
+# Test outputs from chat app
+Test From Chat App/
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
