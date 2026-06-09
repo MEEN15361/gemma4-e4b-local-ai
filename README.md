@@ -34,15 +34,23 @@ AI Assistant ที่รันบนเครื่องตัวเอง ไ
 
 ### 2. Download Model
 
-ดาวน์โหลดไฟล์ GGUF แล้ววางในโฟลเดอร์นี้:
+ดาวน์โหลดไฟล์ GGUF model จาก [HuggingFace](https://huggingface.co/) แล้ววางในโฟลเดอร์นี้
 
-```
-Gemma-4-E4B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf
-```
+**ใช้ GGUF model ตัวไหนก็ได้** ที่เครื่องรันไหว เช่น:
 
-> ดาวน์โหลดจาก HuggingFace: ค้นหา "Gemma 4 E4B Uncensored GGUF"
->
-> หรือใช้ model อื่นได้ แก้ชื่อไฟล์ใน `Modelfile` บรรทัด `FROM ./...`
+| Model | ขนาด | RAM ที่ใช้ | หมายเหตุ |
+|-------|:----:|:---------:|----------|
+| Gemma 4 E4B Q4 | ~2.5 GB | ~4 GB | แนะนำสำหรับเครื่อง RAM น้อย |
+| Llama 3.2 3B Q4 | ~2 GB | ~4 GB | ภาษาอังกฤษดี |
+| Qwen2.5 3B Q4 | ~2 GB | ~4 GB | รองรับหลายภาษา |
+| Phi-3 Mini Q4 | ~2.4 GB | ~4 GB | เล็กแต่ฉลาด |
+
+> ค้นหาใน HuggingFace: `<ชื่อ model> GGUF` แล้วเลือก quantize ที่เหมาะกับ RAM (Q4_K_M หรือ Q4_K_S สำหรับ 4GB)
+
+จากนั้นแก้ `Modelfile` บรรทัดแรกให้ชี้ไปที่ไฟล์ที่โหลดมา:
+```
+FROM ./ชื่อไฟล์-ที่โหลดมา.gguf
+```
 
 ### 3. Start
 
@@ -148,7 +156,6 @@ MIT - ใช้ได้อิสระ แก้ได้ แจกได้
 
 ## Credits
 
-- Model: [Google Gemma](https://ai.google.dev/gemma)
-- Uncensored variant: HauhauCS
 - Runtime: [Ollama](https://ollama.com/)
 - UI: [Gradio](https://gradio.app/)
+- Compatible with any GGUF model from [HuggingFace](https://huggingface.co/)
