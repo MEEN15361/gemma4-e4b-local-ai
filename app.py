@@ -302,7 +302,7 @@ CONTINUE_PROMPT = (
 def _split_base_and_rounds(messages):
     """Separate original user context from agent round-trip pairs.
     Agent rounds are (assistant response, continue prompt) pairs where
-    the continue prompt starts with '[System: action results]'.
+    the continue prompt starts with '[System: step'.
     """
     base = []
     rounds = []
@@ -312,7 +312,7 @@ def _split_base_and_rounds(messages):
         if (i + 1 < len(messages)
                 and messages[i]["role"] == "assistant"
                 and messages[i + 1]["role"] == "user"
-                and messages[i + 1].get("content", "").startswith("[System: action results]")):
+                and messages[i + 1].get("content", "").startswith("[System: step")):
             rounds.append((messages[i]["content"], messages[i + 1]["content"]))
             i += 2
         else:
